@@ -22,6 +22,7 @@ class BurgerBuilder extends React.Component {
     },
     totalPrice: 0,
     purchaseable: false,
+    isModalOpen: false,
   };
 
   addIngredientsHandler = type => {
@@ -73,6 +74,14 @@ class BurgerBuilder extends React.Component {
     this.setState({ purchaseable: sum > 0 });
   };
 
+  orderNowHandler = () => {
+    this.setState({ isModalOpen: true });
+  };
+
+  orderCancelHandler = () => {
+    this.setState({ isModalOpen: false });
+  };
+
   render() {
     const disabledButtons = {
       ...this.state.ingredients,
@@ -90,8 +99,11 @@ class BurgerBuilder extends React.Component {
           disabled={disabledButtons}
           totalPrice={this.state.totalPrice}
           purchaseable={this.state.purchaseable}
+          orderNow={this.orderNowHandler}
         />
-        <Modal><OrderSummary></OrderSummary></Modal>
+        <Modal isModalOpen={this.state.isModalOpen} orderCancel={this.orderCancelHandler}>
+          <OrderSummary ingredients={this.state.ingredients} totalPrice={this.state.totalPrice}/>
+        </Modal>
       </Aux>
     );
   }

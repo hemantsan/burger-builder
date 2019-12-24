@@ -1,0 +1,8 @@
+.Label {
+    text-transform: capitalize;
+}
+
+span {
+    width: 70px;
+    display: inline-block;
+}

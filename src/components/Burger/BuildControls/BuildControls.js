@@ -22,7 +22,7 @@ const BuildControls = props => (
     ))}
 
     <h2 className='title is-2'>Current Price: {props.totalPrice}</h2>
-    <button className='button is-dark is-medium' disabled={!props.purchaseable}>
+    <button className='button is-dark is-medium' disabled={!props.purchaseable} onClick={props.orderNow}>
       ORDER NOW
     </button>
   </div>
