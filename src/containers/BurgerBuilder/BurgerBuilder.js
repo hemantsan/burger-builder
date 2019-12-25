@@ -92,17 +92,23 @@ class BurgerBuilder extends React.Component {
     }
     return (
       <Aux>
-        <Burger ingredients={this.state.ingredients} />
-        <BuildControls
-          ingredientsAdded={this.addIngredientsHandler}
-          ingredientsRemoved={this.removeIngredientsHandler}
-          disabled={disabledButtons}
-          totalPrice={this.state.totalPrice}
-          purchaseable={this.state.purchaseable}
-          orderNow={this.orderNowHandler}
-        />
-        <Modal isModalOpen={this.state.isModalOpen} orderCancel={this.orderCancelHandler}>
-          <OrderSummary ingredients={this.state.ingredients} totalPrice={this.state.totalPrice}/>
+        <div className='columns'>
+          <div className='column is-5'>
+            <Burger ingredients={this.state.ingredients} />
+          </div>
+          <div className='column is-5'>
+            <BuildControls
+              ingredientsAdded={this.addIngredientsHandler}
+              ingredientsRemoved={this.removeIngredientsHandler}
+              disabled={disabledButtons}
+              totalPrice={this.state.totalPrice}
+              purchaseable={this.state.purchaseable}
+              orderNow={this.orderNowHandler}
+            />
+          </div>
+        </div>
+        <Modal show={this.state.isModalOpen} orderCancel={this.orderCancelHandler}>
+          <OrderSummary ingredients={this.state.ingredients} totalPrice={this.state.totalPrice} />
         </Modal>
       </Aux>
     );

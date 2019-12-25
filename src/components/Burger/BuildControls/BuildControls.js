@@ -10,7 +10,7 @@ const controls = [
 ];
 
 const BuildControls = props => (
-  <div className={classes.BuildControls}>
+  <div className={'container'}>
     {controls.map(control => (
       <BuildControl
         key={control.label}
@@ -20,11 +20,18 @@ const BuildControls = props => (
         disabled={props.disabled[control.type]}
       />
     ))}
-
-    <h2 className='title is-2'>Current Price: {props.totalPrice}</h2>
-    <button className='button is-dark is-medium' disabled={!props.purchaseable} onClick={props.orderNow}>
-      ORDER NOW
-    </button>
+    <div className='box'>
+      <article className='media'>
+        <div className='media-content'>
+          <div className='content'>
+            <h4 className='is-2'>Current Price : {props.totalPrice}</h4>
+            <button className='button is-dark is-medium' disabled={!props.purchaseable} onClick={props.orderNow}>
+              ORDER NOW
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
   </div>
 );
 
